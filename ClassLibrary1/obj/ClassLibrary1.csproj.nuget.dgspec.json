@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ConsoleApp3\\ConsoleApp3.csproj": {}
+    "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ClassLibrary1\\ClassLibrary1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ConsoleApp3\\ConsoleApp3.csproj": {
+    "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ClassLibrary1\\ClassLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ConsoleApp3\\ConsoleApp3.csproj",
-        "projectName": "ConsoleApp3",
-        "projectPath": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ConsoleApp3\\ConsoleApp3.csproj",
+        "projectUniqueName": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ClassLibrary1\\ClassLibrary1.csproj",
+        "projectName": "ClassLibrary1",
+        "projectPath": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ClassLibrary1\\ClassLibrary1.csproj",
         "packagesPath": "C:\\Users\\karuk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ConsoleApp3\\obj\\",
+        "outputPath": "C:\\Users\\karuk\\Робочий стіл\\MusicalAssaultSquad\\ClassLibrary1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,12 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "NAudio": {
-              "target": "Package",
-              "version": "[2.1.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
