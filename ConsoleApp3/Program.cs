@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NAudio.Wave;
 
 namespace MusicPlayer
 {
@@ -52,6 +53,9 @@ namespace MusicPlayer
         private List<string> playbackHistory; // Список для збереження історії прослуховування
         private string[] musicFiles; // Масив для збереження списку музичних файлів
         private bool isPlaying; // Прапорець для відстеження поточного стану відтворення музики
+
+        private WaveOutEvent outputDevice; // Об'єкт для відтворення звуку
+        private AudioFileReader audioFile; // Об'єкт для читання аудіофайлу
 
         public MusicService()
         {
@@ -114,12 +118,30 @@ namespace MusicPlayer
             Console.WriteLine($"Playing song: {songName}"); // Виведення повідомлення про відтворення пісні
 
             playbackHistory.Add(songName); // Додавання пісні до історії прослуховування
+
+            // Створення об'єкту WaveOutEvent для відтворення звуку
+            outputDevice = new WaveOutEvent();
+            // Створення об'єкту AudioFileReader для читання аудіофайлу
+            audioFile = new AudioFileReader(musicFiles[songIndex]);
+
+            // Підключення обробника події для визначення кінця відтворення пісні
+            outputDevice.PlaybackStopped += (sender, e) =>
+            {
+                StopMusic();
+            };
+
+            outputDevice.Init(audioFile); // Ініціалізація WaveOutEvent і AudioFileReader
+            outputDevice.Play(); // Відтворення звуку
             isPlaying = true; // Встановлення прапорця відтворення
         }
 
         private void StopMusic()
         {
             Console.WriteLine("The song is stopped."); // Виведення повідомлення про зупинку пісні
+
+            outputDevice.Stop(); // Зупинка відтворення звуку
+            outputDevice.Dispose(); // Звільнення ресурсів WaveOutEvent
+            audioFile.Dispose(); // Звільнення ресурсів AudioFileReader
 
             isPlaying = false; // Зупинка відтворення пісні
         }
