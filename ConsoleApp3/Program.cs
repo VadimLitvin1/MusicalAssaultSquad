@@ -13,12 +13,12 @@ namespace MusicPlayer
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("=== Main Menu ===");
-                Console.WriteLine("1. Personal Profile"); // Опція: Особистий профіль
-                Console.WriteLine("2. Listening history"); // Опція: Історія прослуховування
-                Console.WriteLine("3. Play music"); // Опція: Відтворити музику
-                Console.WriteLine("4. Exit"); // Опція: Вихід
-                Console.Write("Choose an option: "); // Запит на вибір опції
+                Console.WriteLine("=== Main Menu ==="); // Головне меню
+                Console.WriteLine("1. Personal Profile"); // Особистий профіль
+                Console.WriteLine("2. Listening history"); // Історія прослуховування
+                Console.WriteLine("3. Play music"); // Відтворити музику
+                Console.WriteLine("4. Exit"); // Вийти
+                Console.Write("Choose an option: "); // Виберіть опцію
 
                 string option = Console.ReadLine();
                 Console.WriteLine();
@@ -38,7 +38,7 @@ namespace MusicPlayer
                         exit = true; // Встановлення прапорця для виходу з циклу
                         break;
                     default:
-                        Console.WriteLine("Invalid selection. Try again."); // Вивід повідомлення про неправильний вибір
+                        Console.WriteLine("Invalid selection. Try again."); // Недійсний вибір. Спробуйте ще раз.
                         break;
                 }
 
@@ -50,25 +50,25 @@ namespace MusicPlayer
     class MusicService
     {
         private List<string> playbackHistory; // Список для збереження історії прослуховування
-        private string[] musicFiles; // Масив для збереження списку музичних файлів
+        private string[] artists; // Масив для збереження списку виконавців
         private bool isPlaying; // Прапорець для відстеження поточного стану відтворення музики
 
         public MusicService()
         {
             playbackHistory = new List<string>();
-            musicFiles = Directory.GetFiles("music", "*.mp3"); // Отримання списку музичних файлів з папки "music"
+            artists = Directory.GetDirectories("music"); // Отримання списку папок виконавців з папки "music"
             isPlaying = false; // Початкове значення прапорця відтворення
         }
 
         public void PersonalProfile()
         {
-            Console.WriteLine("=== Personal Profile ===");
-            // TODO: Реалізуйте функціонал особистого профілю
+            Console.WriteLine("=== Personal Profile ==="); // Особистий профіль
+            // TODO: Implement personal profile functionality
         }
 
         public void PlaybackHistory()
         {
-            Console.WriteLine("=== Listening History ===");
+            Console.WriteLine("=== Listening History ==="); // Історія прослуховування
             foreach (string song in playbackHistory)
             {
                 Console.WriteLine(song); // Виведення кожної пісні з історії прослуховування
@@ -79,48 +79,72 @@ namespace MusicPlayer
         {
             if (isPlaying)
             {
-                Console.WriteLine("Stop current song? (Y/N)"); // Запит на зупинку поточної пісні
+                Console.WriteLine("Stop current song? (Yes/No)"); // Зупинити поточну пісню? (Так/Ні)
                 string stop = Console.ReadLine();
-                if (stop.ToUpper() == "Y")
+                if (stop.ToUpper() == "YES") // ТАК
                 {
-                    StopMusic(); // Зупинка поточної пісні
+                    StopMusic(); // Зупинити поточну пісню
                 }
             }
             else
             {
-                Console.WriteLine("=== Play music ===");
-                Console.WriteLine("List of available songs:");
-                for (int i = 0; i < musicFiles.Length; i++)
+                Console.WriteLine("=== Play music ==="); // Відтворити музику
+                Console.WriteLine("List of available artists:"); // Список доступних виконавців:
+
+                for (int i = 0; i < artists.Length; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {Path.GetFileNameWithoutExtension(musicFiles[i])}"); // Виведення списку доступних пісень
+                    Console.WriteLine($"{i + 1}. {Path.GetFileName(artists[i])}");
                 }
 
-                Console.Write("Select a song number to play: "); // Запит на вибір номеру пісні для відтворення
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out int songNumber) && songNumber > 0 && songNumber <= musicFiles.Length)
+                Console.Write("Select an artist number: "); // Виберіть номер виконавця:
+                string artistInput = Console.ReadLine();
+                if (int.TryParse(artistInput, out int artistNumber) && artistNumber > 0 && artistNumber <= artists.Length)
                 {
-                    PlaySong(songNumber - 1); // Відтворення вибраної пісні
+                    string selectedArtist = Path.GetFileName(artists[artistNumber - 1]);
+                    Console.WriteLine($"Selected artist: {selectedArtist}"); // Обраний виконавець:Console.WriteLine($"List of songs by {selectedArtist}:"); // Список пісень {selectedArtist}:
+                    string[] songs = GetSongsForArtist(selectedArtist);
+
+                    for (int i = 0; i < songs.Length; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {songs[i]}");
+                    }
+
+                    Console.Write("Select a song number: "); // Виберіть номер пісні:
+                    string songInput = Console.ReadLine();
+                    if (int.TryParse(songInput, out int songNumber) && songNumber > 0 && songNumber <= songs.Length)
+                    {
+                        string selectedSong = songs[songNumber - 1];
+                        Console.WriteLine($"Playing song: {selectedSong}"); // Відтворення пісні:
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid song number."); // Недійсний номер пісні.
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Wrong song selection."); // Повідомлення про неправильний вибір пісні
+                    Console.WriteLine("Invalid artist number."); // Недійсний номер виконавця.
                 }
             }
         }
 
-        private void PlaySong(int songIndex)
+        private string[] GetSongsForArtist(string artist)
         {
-            string songName = Path.GetFileNameWithoutExtension(musicFiles[songIndex]);
-            Console.WriteLine($"Playing song: {songName}"); // Виведення повідомлення про відтворення пісні
-
-            playbackHistory.Add(songName); // Додавання пісні до історії прослуховування
-            isPlaying = true; // Встановлення прапорця відтворення
+            string artistFolderPath = Path.Combine("music", artist);
+            if (Directory.Exists(artistFolderPath))
+            {
+                return Directory.GetFiles(artistFolderPath, "*.mp3");
+            }
+            else
+            {
+                Console.WriteLine($"Artist '{artist}' not found."); // Виконавець '{artist}' не знайдений.
+                return new string[0];
+            }
         }
 
         private void StopMusic()
         {
-            Console.WriteLine("The song is stopped."); // Виведення повідомлення про зупинку пісні
-
+            Console.WriteLine("The song is stopped."); // Пісню зупинено.
             isPlaying = false; // Зупинка відтворення пісні
         }
     }

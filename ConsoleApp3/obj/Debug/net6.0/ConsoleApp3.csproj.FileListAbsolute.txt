@@ -13,3 +13,18 @@ C:\Users\litvi\OneDrive\Рабочий стол\ConsoleApp3\obj\Debug\net6.0\ref
 C:\Users\litvi\OneDrive\Рабочий стол\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.pdb
 C:\Users\litvi\OneDrive\Рабочий стол\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.genruntimeconfig.cache
 C:\Users\litvi\OneDrive\Рабочий стол\ConsoleApp3\obj\Debug\net6.0\ref\ConsoleApp3.dll
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.csproj.AssemblyReference.cache
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.AssemblyInfoInputs.cache
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.AssemblyInfo.cs
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.csproj.CoreCompileInputs.cache
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.dll
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\refint\ConsoleApp3.dll
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.pdb
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\bin\Debug\net6.0\ConsoleApp3.exe
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\bin\Debug\net6.0\ConsoleApp3.deps.json
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\bin\Debug\net6.0\ConsoleApp3.runtimeconfig.json
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\bin\Debug\net6.0\ConsoleApp3.dll
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\bin\Debug\net6.0\ConsoleApp3.pdb
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ConsoleApp3.genruntimeconfig.cache
+C:\Users\Max_TT\Desktop\MusicalAssaultSquad\ConsoleApp3\obj\Debug\net6.0\ref\ConsoleApp3.dll
